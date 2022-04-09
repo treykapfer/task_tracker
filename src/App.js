@@ -38,10 +38,19 @@ function App() {
     console.log(id)
   }
 
+  //Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 100) + 1
+    const newTask = {id, ...task}
+    setTasks(...tasks,newTask)
+    
+    console.log(task)
+  }
+
   return (
     <div className='container'>
       <Header />
-      <AddTask />
+      <AddTask onAdd={addTask}/>
       {tasks.length > 0 ? 
         <Tasks tasks ={tasks} onDelete={deleteTask} onToggle = {toggleReminder}/> :
         <h3 style={{color: 'red'}}>No Tasks Available</h3>}
