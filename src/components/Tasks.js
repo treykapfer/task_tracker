@@ -1,27 +1,33 @@
-
-const tasks = [
-    {
-        id: 1,
-        text: 'Doctors Appointment',
-        day: 'Feb 5th at 2:30 pm'
-    }
-]
+import {useState} from 'react'
 
 const Tasks = (props) => {
 
+    const [tasks, setTasks]  = useState([
+        {
+            id: 1,
+            text: 'Doctors Appointment',
+            day: 'Feb 5th at 2:30 pm',
+            reminder: true,
+        },
+        {
+            id: 2,
+            text: 'Meeting at School',
+            day: 'Feb 6th at 1:30 pm',
+            reminder: true,
+        },
+        {
+            id: 3,
+            text: 'Food Shopping',
+            day: 'Feb 5th at 2:30 pm',
+            reminder: false,
+        }
+    ]);
+
     return (
-        <header className='header'>
-            <h1>{props.title}</h1>
-            <Button color='green' text='Add' onClick = {onClick}/>
-        </header>
+        <div className='task_container'>
+            {tasks.map((task) => (<h3 key={task.id}>{task.text}</h3>))}
+        </div>
     )
-}
-
-Header.defaultProps = {
-}
-
-// validates string
-Header.propTypes = {
 }
 
 export default Tasks;
