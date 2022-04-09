@@ -5,6 +5,8 @@ import {useState} from 'react'
 
 function App() {
 
+  const [showAdd, setShowAdd] = useState(false)
+
   const [tasks, setTasks]  = useState([
     {
         id: 1,
@@ -40,17 +42,20 @@ function App() {
 
   //Add Task
   const addTask = (task) => {
-    const id = Math.floor(Math.random() * 100) + 1
+    const id = Math.floor(Math.random() * 100000) + 1
     const newTask = {id, ...task}
-    setTasks(...tasks,newTask)
-    
-    console.log(task)
+    console.log(newTask)
+    setTasks([...tasks,newTask])
   }
 
+  //Toggle Show
+  const addToggleHandler = () => {
+    setShowAdd(!showAdd)
+  }
   return (
     <div className='container'>
-      <Header />
-      <AddTask onAdd={addTask}/>
+      <Header onAdd={addToggleHandler}/>
+      {showAdd ? <AddTask onAdd={addTask}/> : ''}
       {tasks.length > 0 ? 
         <Tasks tasks ={tasks} onDelete={deleteTask} onToggle = {toggleReminder}/> :
         <h3 style={{color: 'red'}}>No Tasks Available</h3>}
