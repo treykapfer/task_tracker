@@ -1,11 +1,13 @@
 import { useState } from 'react'
 
 const AddTask = () => {
-
+    
+    //use state for form
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [reminder, setReminder] = useState(false)
 
+    //change handlers for form
     const textChangeHandler = (e) => {
         setText(e.target.value)
     }
