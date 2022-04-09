@@ -31,10 +31,17 @@ function App() {
     console.log('deleted', id)
   }
 
+  //Toggle Reminder
+  const toggleReminder = (id) => {
+    console.log(id)
+  }
+
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks ={tasks} onDelete={deleteTask}/>
+      {tasks.length > 0 ? 
+        <Tasks tasks ={tasks} onDelete={deleteTask} onToggle = {toggleReminder}/> :
+        <h3 style={{color: 'red'}}>No Tasks Available</h3>}
     </div>
   );
 }
