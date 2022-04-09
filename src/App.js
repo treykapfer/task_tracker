@@ -52,7 +52,7 @@ function App() {
   const addToggleHandler = () => {
     setShowAdd(!showAdd)
   }
-  
+
   return (
     <div className='container'>
       <Header onAdd={addToggleHandler}/>
